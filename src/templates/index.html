@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume LLM Analysis</title>
+    <!-- Link assumes styles.css is inside src/static/ -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ATS Resume LLM Analysis</h1>
+        <p>Upload a resume and optionally paste a job description for contextual analysis.</p>
+
+        <!-- Upload Form -->
+        <form id="upload-form" enctype="multipart/form-data">
+            <div class="form-section">
+                <label for="resume-file">1. Choose Resume File:</label>
+                <input type="file" id="resume-file" name="resume" accept=".pdf,.docx,.txt" required>
+            </div>
+
+            <div class="form-section">
+                <label for="job-description">2. Paste Job Description (Optional):</label>
+                <textarea id="job-description" name="job_description" rows="10" placeholder="Paste the full job description here..."></textarea>
+            </div>
+
+            <button type="submit" id="upload-button">Upload & Analyze</button>
+        </form>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing resume and job description, please wait...</p>
+        </div>
+
+        <!-- Analysis Result Display -->
+        <div id="analysis-result" class="result-section hidden">
+            <h2>Analysis Result</h2>
+            <div id="result-content">
+                <!-- Dynamic content added here by JS -->
+            </div>
+        </div>
+
+         <!-- Error Message Display -->
+        <div id="error-message" class="error hidden">
+            <!-- Error messages shown here -->
+        </div>
+
+
+        <!-- History Section -->
+        <div id="history-section" class="history-section">
+            <h2>Analysis History</h2>
+             <button id="refresh-history-button">Refresh History</button>
+            <div id="history-list">
+                <p>Loading history...</p>
+                <!-- Dynamic list added here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Link assumes script.js is inside src/static/ -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
